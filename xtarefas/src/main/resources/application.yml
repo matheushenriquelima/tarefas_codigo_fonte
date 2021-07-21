@@ -19,3 +19,6 @@ spring:
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
   liquibase:
     change-log: classpath:config/liquibase/master.xml
+application:
+  feign:
+    url-documents: http://localhost:8081

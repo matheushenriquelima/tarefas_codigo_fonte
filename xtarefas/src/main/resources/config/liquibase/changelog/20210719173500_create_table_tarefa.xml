@@ -23,7 +23,6 @@
                 <constraints nullable="false"/>
             </column>
             <column name="ID_RESPONSAVEL" type="bigint"/>
-            <column name="ID_ANEXO" type="bigint"/>
         </createTable>
     </changeSet>
     <changeSet id="20210719173500-2" author="matheus.lima">
@@ -32,12 +31,5 @@
                 referencedTableName="RESPONSAVEL" baseColumnNames="ID_RESPONSAVEL"
                 baseTableName="TAREFA"
                 referencedColumnNames="ID_RESPONSAVEL"/>
-    </changeSet>
-    <changeSet id="20210719173500-3" author="matheus.lima">
-        <addForeignKeyConstraint
-                constraintName="FK_ANEXO"
-                referencedTableName="ANEXO" baseColumnNames="ID_ANEXO"
-                baseTableName="TAREFA"
-                referencedColumnNames="ID_ANEXO"/>
     </changeSet>
 </databaseChangeLog>

@@ -28,5 +28,5 @@ public class TarefaDTO {
 
     private List<AnexoDTO> anexos = new ArrayList<>();
 
-    private TarefaDTO responsavel;
+    private ResponsavelDTO responsavel;
 }

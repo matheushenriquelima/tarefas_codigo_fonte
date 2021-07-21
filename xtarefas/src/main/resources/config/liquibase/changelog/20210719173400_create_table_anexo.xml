@@ -10,9 +10,20 @@
             <column name="ID_ANEXO" type="bigint">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column  name="FILENAME"  type="text">
-                <constraints  nullable="false"/>
+            <column name="FILENAME" type="text">
+                <constraints nullable="false"/>
             </column>
+            <column name="FILE" type="text">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ID_TAREFA" type="bigint"/>
         </createTable>
+    </changeSet>
+    <changeSet id="20210719173500-3" author="matheus.lima">
+        <addForeignKeyConstraint
+                constraintName="FK_ANEXO_TAREFA"
+                referencedTableName="TAREFA" baseColumnNames="ID_TAREFA"
+                baseTableName="ANEXO"
+                referencedColumnNames="ID_TAREFA"/>
     </changeSet>
 </databaseChangeLog>

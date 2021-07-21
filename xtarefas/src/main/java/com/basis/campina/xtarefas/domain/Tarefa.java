@@ -46,7 +46,7 @@ public class Tarefa {
     private String status;
 
     @Fetch(value = FetchMode.SUBSELECT)
-    @OneToMany(cascade = CascadeType.ALL,orphanRemoval = true)
+    @OneToMany(cascade = CascadeType.ALL,orphanRemoval = true,mappedBy = "tarefa")
     private List<Anexo> anexos = new ArrayList<>();
 
     @ManyToOne
