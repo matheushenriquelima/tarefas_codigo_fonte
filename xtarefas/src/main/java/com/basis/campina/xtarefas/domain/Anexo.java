@@ -3,7 +3,6 @@ package com.basis.campina.xtarefas.domain;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -32,6 +31,9 @@ public class Anexo {
 
     @Column(name = "FILE")
     private String file;
+
+    @Column(name = "CHAVE")
+    private String chave;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "ID_TAREFA", referencedColumnName = "ID_TAREFA")

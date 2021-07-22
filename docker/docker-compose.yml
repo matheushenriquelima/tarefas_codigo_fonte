@@ -1,0 +1,17 @@
+version: '2'
+services:
+  postgresql-xtarefas:
+    extends:
+      file: postgresql.yml
+      service: postgresql
+    container_name: xtarefas-postgresql
+  minio:
+    extends:
+      file: minio.yml
+      service: documentos-minio
+    container_name: minio
+  elastic-search:
+    extends:
+      file: elasticsearch.yml
+      service: elasticsearch
+    container_name: elasticsearch-xtarefas

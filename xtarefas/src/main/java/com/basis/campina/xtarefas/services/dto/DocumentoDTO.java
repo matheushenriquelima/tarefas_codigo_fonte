@@ -6,15 +6,10 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class AnexoDTO {
+public class DocumentoDTO {
 
-    private Long id;
+    private String uuId;
 
     @NotNull
-    private String filename;
-
-    private Long idTarefa;
-
-    private DocumentoDTO documento;
-
+    private String file;
 }

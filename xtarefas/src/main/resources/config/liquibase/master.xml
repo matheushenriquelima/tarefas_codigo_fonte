@@ -11,5 +11,6 @@
     relativeToChangelogFile ="false"/>
     <include file="config/liquibase/changelog/20210719173400_create_table_anexo.xml"
              relativeToChangelogFile ="false"/>
-
+    <include file="config/liquibase/changelog/20210721193700_update_table_anexo.xml"
+             relativeToChangelogFile ="false"/>
 </databaseChangeLog>
