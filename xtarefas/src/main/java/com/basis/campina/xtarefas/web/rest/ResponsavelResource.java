@@ -1,11 +1,15 @@
 package com.basis.campina.xtarefas.web.rest;
 
+import com.basis.campina.xtarefas.domain.document.ResponsavelDocument;
 import com.basis.campina.xtarefas.services.ResponsavelService;
-import com.basis.campina.xtarefas.services.TarefaService;
 import com.basis.campina.xtarefas.services.dto.ResponsavelDTO;
-import com.basis.campina.xtarefas.services.dto.TarefaDTO;
+import com.basis.campina.xtarefas.services.elastic.ResponsavelElasticsearchService;
+import com.basis.campina.xtarefas.services.filtro.ResponsavelFiltro;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,6 +27,8 @@ import org.springframework.web.bind.annotation.RestController;
 public class ResponsavelResource {
 
     private final ResponsavelService service;
+
+    private final ResponsavelElasticsearchService elasticsearchService;
 
     @GetMapping("/{id}")
     public ResponseEntity<ResponsavelDTO> obterPorId(@PathVariable Long id) {
@@ -45,6 +51,12 @@ public class ResponsavelResource {
     public ResponseEntity<Void> deletar(@PathVariable Long id){
         service.deletar(id);
         return ResponseEntity.ok().build();
+    }
+
+    @PostMapping("/_search")
+    public ResponseEntity<Page<ResponsavelDocument>> search(@RequestBody ResponsavelFiltro filter, Pageable pageable) {
+        Page<ResponsavelDocument> responsaveis = elasticsearchService.search(filter, pageable);
+        return new ResponseEntity<>(responsaveis, HttpStatus.OK);
     }
 
 }
