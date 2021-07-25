@@ -31,11 +31,13 @@ public class AnexoResource {
 
     @GetMapping("/{id}")
     public ResponseEntity<AnexoDTO> obterPorId(@PathVariable Long id) {
+        log.info("[XTAREFAS] Requisição REST para obter Anexo por id {}", id);
         return ResponseEntity.ok(service.obterPorId(id));
     }
 
     @GetMapping("/documento/{uuId}")
     public ResponseEntity<DocumentoDTO> obterDocumento(@PathVariable String uuId) {
+        log.info("[XTAREFAS] Requisição REST para obter Documento por uuId {}", uuId);
         return ResponseEntity.ok(service.obterDocumento(uuId));
     }
 

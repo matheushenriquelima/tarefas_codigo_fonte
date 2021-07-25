@@ -30,13 +30,17 @@ public class ResponsavelService {
 
     public ResponsavelDTO salvar(ResponsavelDTO dto) {
         Responsavel responsavel = repository.save(mapper.toEntity(dto));
-        applicationEventPublisher.publishEvent(new ResponsavelEvent(responsavel.getId()));
+        emitirEvento(responsavel.getId());
         return mapper.toDto(responsavel);
     }
 
     public void deletar(Long id){
         obterPorId(id);
         repository.deleteById(id);
+    }
+
+    public void emitirEvento(Long id){
+        applicationEventPublisher.publishEvent(new ResponsavelEvent(id));
     }
 
 }

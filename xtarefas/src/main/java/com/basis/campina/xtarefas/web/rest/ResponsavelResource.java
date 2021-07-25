@@ -32,23 +32,27 @@ public class ResponsavelResource {
 
     @GetMapping("/{id}")
     public ResponseEntity<ResponsavelDTO> obterPorId(@PathVariable Long id) {
+        log.info("[XTAREFAS] Requisição REST para obter Responsavel por id {}", id);
         return ResponseEntity.ok(service.obterPorId(id));
     }
 
     @PostMapping
     public ResponseEntity<Void> salvar(@RequestBody ResponsavelDTO responsavelDTO){
+        log.info("[XTAREFAS] Requisição REST para salvar Responsavel {}", responsavelDTO);
         service.salvar(responsavelDTO);
         return ResponseEntity.ok().build();
     }
 
     @PutMapping
     public ResponseEntity<Void> alterar(@RequestBody ResponsavelDTO responsavelDTO){
+        log.info("[XTAREFAS] Requisição REST para alterar Responsavel {}", responsavelDTO);
         service.salvar(responsavelDTO);
         return ResponseEntity.ok().build();
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deletar(@PathVariable Long id){
+        log.info("[XTAREFAS] Requisição REST para deletar Responsavel por id {}", id);
         service.deletar(id);
         return ResponseEntity.ok().build();
     }

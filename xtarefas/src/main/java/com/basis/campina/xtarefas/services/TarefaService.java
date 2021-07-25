@@ -1,7 +1,6 @@
 package com.basis.campina.xtarefas.services;
 
 
-import com.basis.campina.xtarefas.domain.Anexo;
 import com.basis.campina.xtarefas.domain.Tarefa;
 import com.basis.campina.xtarefas.repository.TarefaRepository;
 import com.basis.campina.xtarefas.services.dto.AnexoDTO;
@@ -30,6 +29,8 @@ public class TarefaService {
 
     private final ApplicationEventPublisher applicationEventPublisher;
 
+    private final ResponsavelService responsavelService;
+
     @Transactional(readOnly = true)
     public TarefaDTO obterPorId(Long id) {
         return mapper.toDto(repository.findById(id).orElseThrow(()-> new RegraNegocioException("Tarefa não existe")));
@@ -43,6 +44,7 @@ public class TarefaService {
 
         TarefaDTO tarefaDTO = mapper.toDto(tarefa);
         lancarEventoAnexo(tarefaDTO.getAnexos());
+        emitirEventoResponsavel(tarefaDTO.getResponsavel().getId());
         return tarefaDTO;
     }
 
@@ -53,6 +55,10 @@ public class TarefaService {
 
     private void gerarChaveArquivo(List<AnexoDTO> anexoDTOS){
         anexoDTOS.forEach(anexoDTO -> anexoDTO.getDocumento().setUuId(UUID.randomUUID().toString()));
+    }
+
+    private void emitirEventoResponsavel(Long idResponsavel){
+        responsavelService.emitirEvento(idResponsavel);
     }
 
     private void salvarDocumentos(List<AnexoDTO> anexoDTOS){
