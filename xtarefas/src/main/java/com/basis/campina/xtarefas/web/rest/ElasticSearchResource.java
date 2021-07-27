@@ -23,7 +23,7 @@ public class ElasticSearchResource {
     }
 
     @GetMapping("/{entity}")
-    public ResponseEntity<String> reindex(@PathVariable String entity) {
+    public ResponseEntity<String> reindexEntity(@PathVariable String entity) {
         this.elasticSearchService.reindexEntity(entity);
         return ResponseEntity.ok().body("Reindexando o elasticsearch por entidade");
     }

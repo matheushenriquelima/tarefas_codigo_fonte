@@ -2,6 +2,7 @@ package com.basis.campina.xtarefas.services.elastic;
 
 import com.basis.campina.xtarefas.repository.elastic.ElasticEntity;
 import com.basis.campina.xtarefas.repository.elastic.Reindexer;
+import com.basis.campina.xtarefas.services.exceptions.BadRequestAlertException;
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
@@ -78,7 +79,7 @@ public class ElasticSearchService {
         ElasticEntity searchRepository;
         do {
             if (!var3.hasNext()) {
-                throw new RuntimeException("Falha de Reindexação...");
+                throw new BadRequestAlertException("Falha de Reindexação...");
             }
 
             searchRepository = var3.next();

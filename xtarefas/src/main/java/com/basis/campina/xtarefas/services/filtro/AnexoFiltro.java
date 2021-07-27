@@ -15,16 +15,12 @@ public class AnexoFiltro extends DefaultFilter implements Serializable, BaseFilt
 
     private static final long serialVersionUID = 4980515323702820328L;
 
-    private String file;
-
-    private String filename;
-
     @Override
     public BoolQueryBuilder getFilter() {
         BoolQueryBuilder queryBuilder = QueryBuilders.boolQuery();
 
         List<String> fields = new ArrayList<>();
-        filterFields(fields, query, queryBuilder, "file", "filename");
+        filterFields(fields, query, queryBuilder, "file", "fileName");
 
         return  queryBuilder;
     }

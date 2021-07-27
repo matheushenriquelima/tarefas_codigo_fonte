@@ -19,6 +19,8 @@ import java.time.LocalDate;
 @NoArgsConstructor
 public class TarefaDocument extends BaseDocument {
 
+    private static final long serialVersionUID = -1768915045323314380L;
+
     @MultiField(mainField = @Field(type = FieldType.Text, store = true, analyzer = TRIM_CASE_INSENSITIVE, fielddata = true), otherFields = {
             @InnerField(suffix = SORT, type = FieldType.Text, store = true, analyzer = TRIM_CASE_INSENSITIVE, fielddata = true)})
     private String nome;

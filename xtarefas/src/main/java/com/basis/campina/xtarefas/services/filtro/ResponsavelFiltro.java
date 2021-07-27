@@ -6,7 +6,6 @@ import org.elasticsearch.index.query.BoolQueryBuilder;
 import org.elasticsearch.index.query.QueryBuilders;
 
 import java.io.Serializable;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,21 +15,13 @@ public class ResponsavelFiltro extends DefaultFilter implements Serializable, Ba
 
     private static final long serialVersionUID = 4980515323702820328L;
 
-    private String nome;
-
-    private LocalDate dataNasc;
-
-    private String email;
-
-    private String tarefas;
-
     @Override
     public BoolQueryBuilder getFilter() {
         BoolQueryBuilder queryBuilder = QueryBuilders.boolQuery();
 
         List<String> fields = new ArrayList<>();
         filterFields(fields, query, queryBuilder, "nome", "email", "tarefas");
-        addShouldTermQuery(queryBuilder, "dataNasc", query);
+        addMustTermQuery(queryBuilder, "dataNasc", queryDate);
 
         return  queryBuilder;
     }

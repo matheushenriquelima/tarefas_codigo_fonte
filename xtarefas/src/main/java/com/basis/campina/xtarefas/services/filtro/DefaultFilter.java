@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 
 @Getter
 @Setter
@@ -14,4 +15,7 @@ public class DefaultFilter implements Serializable {
     protected String query;
 
     protected Boolean status;
+
+    protected LocalDate queryDate;
+
 }
