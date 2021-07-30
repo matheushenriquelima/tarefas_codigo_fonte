@@ -1,6 +1,5 @@
 package com.basis.campina.xtarefas.services.dto;
 
-import com.basis.campina.xtarefas.domain.Tarefa;
 import com.sun.istack.NotNull;
 import lombok.Getter;
 import lombok.Setter;
@@ -24,5 +23,5 @@ public class ResponsavelDTO {
     @NotNull
     private String email;
 
-    private List<Tarefa> tarefas = new ArrayList<>();
+    private List<TarefaDTO> tarefas = new ArrayList<>();
 }

@@ -24,7 +24,7 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public final class TestUtil {
+public final class TesteUtil {
 
     private static final ObjectMapper mapper = createObjectMapper();
 
@@ -115,5 +115,5 @@ public final class TestUtil {
         return allQuery.getResultList();
     }
 
-    private TestUtil() {}
+    private TesteUtil() {}
 }

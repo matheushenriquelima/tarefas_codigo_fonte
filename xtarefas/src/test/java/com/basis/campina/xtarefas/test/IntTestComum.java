@@ -5,6 +5,7 @@ import org.junit.Before;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
@@ -17,6 +18,9 @@ public abstract class IntTestComum {
     private WebApplicationContext webApplicationContext;
     private MockMvc mockMvc;
 
+    @Autowired
+    private MappingJackson2HttpMessageConverter converter;
+
     @Before
     public void setUp() {
         this.mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).build();
@@ -25,6 +29,10 @@ public abstract class IntTestComum {
     @Autowired
     public void setWebApplicationContext(WebApplicationContext pWebApplicationContext) {
         webApplicationContext = pWebApplicationContext;
+    }
+
+    public MappingJackson2HttpMessageConverter getConverter() {
+        return converter;
     }
 
     protected MockMvc getMockMvc() {

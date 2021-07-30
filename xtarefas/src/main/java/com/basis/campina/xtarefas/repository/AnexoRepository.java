@@ -4,7 +4,6 @@ package com.basis.campina.xtarefas.repository;
 import com.basis.campina.xtarefas.domain.Anexo;
 import com.basis.campina.xtarefas.domain.document.AnexoDocument;
 import com.basis.campina.xtarefas.repository.elastic.Reindexer;
-import com.basis.campina.xtarefas.services.dto.DominioFixoDTO;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;

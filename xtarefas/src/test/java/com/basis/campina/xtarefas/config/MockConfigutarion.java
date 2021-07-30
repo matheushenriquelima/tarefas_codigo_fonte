@@ -17,7 +17,7 @@ public class MockConfigutarion {
 
     @PostConstruct
     public void mock(){
-        Mockito.when(documentClient.salvar(Collections.singletonList(new DocumentoDTO())));
+        Mockito.when(documentClient.salvar(Collections.singletonList(new DocumentoDTO()))).thenReturn(null);
     }
 
 }
